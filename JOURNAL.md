@@ -130,3 +130,50 @@ Trois checks executes sur les 10 015 images via `clean_dataset.py` (~4 min CPU) 
 | **Total** | **~1.5 h** | **~10-15 h** |
 
 &rarr; Recommandation : Colab GPU ou Kaggle Notebooks (T4 gratuit).
+
+---
+
+## 2026-05-18 — Run reel + finalisation
+
+### Auteurs identifies
+
+- **SAI Sonia** + **SAKOA Etia-Anaelle** (M2 YNOV Data Scientist)
+
+### Run d'entrainement reel execute
+
+Run complet sur CPU (Python 3.13, TF 2.21, Windows), IMG_SIZE = 160 (reduit de 224 pour tenir sur CPU sans GPU). Total : **~80 min** (47 min run principal + 37 min finition GAN vasc + retrain).
+
+### Resultats observes
+
+| Modele | Accuracy | Balanced acc. | F1 macro |
+|--------|----------|---------------|----------|
+| Baseline CNN          | **0.584** | 0.242 | 0.148 |
+| CNN ameliore          | 0.477 | 0.280 | 0.183 |
+| **VGG16 Transfer Learning** | 0.364 | **0.316** | **0.206** |
+| VGG16 + GAN enrichi   | 0.548 | 0.286 | 0.196 |
+
+**Verdict GAN** : SCENARIO C (degradation sur les classes ciblees)
+
+- F1 sur `df`   : 0.067 -> 0.000 (-100 %)
+- F1 sur `vasc` : 0.440 -> 0.083 (-81 %)
+
+Mais effet secondaire positif : amelioration sur `akiec` (+51 %), `bcc` (+57 %), `bkl` (+83 %), `nv` (+32 %). Le GAN a agi comme regulariseur indirect plutot que comme specialiste des classes rares.
+
+Cause probable : DCGAN sur 80-100 images = mode collapse partiel, gap de resolution 64 -> 160 introduisant un biais texture, ratio synth/reel 6:1 desequilibre.
+
+### Mises a jour notebook
+
+- [x] Page de garde : auteurs reels + promo 2025-2026
+- [x] Cellule config : IMG_SIZE 224 -> 160 documente
+- [x] Tableau pretraitement : 160x160 explique
+- [x] Section 12 : tableau de synthese statique avec vrais chiffres + F1 par classe
+- [x] Section 14 : scenario C tranche, causes detaillees, effets secondaires positifs documentes
+
+### Livrables finaux pousses sur GitHub (etiaaa/deep_learningM2wSonia)
+
+- README.md, JOURNAL.md
+- methodologie_HAM10000.ipynb (50 cellules)
+- clean_dataset.py, requirements.txt
+- data/ham10000/HAM10000_metadata.csv + data/ham10000_clean/*
+
+Modeles entraines (`runs/`) et images brutes (`data/ham10000/HAM10000_images_part_*/`) exclus via .gitignore pour des raisons de taille (regenerables).
