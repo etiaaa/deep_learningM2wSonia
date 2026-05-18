@@ -1,0 +1,5 @@
+image_id,reason,kept_alternative,lesion_id,dx
+ISIC_0029861,md5_duplicate,ISIC_0024366,HAM_0002300,nv
+ISIC_0029938,md5_duplicate,ISIC_0024777,HAM_0001895,nv
+ISIC_0032228,phash_label_conflict,,HAM_0003984,nv
+ISIC_0033598,phash_label_conflict,,HAM_0005496,nv

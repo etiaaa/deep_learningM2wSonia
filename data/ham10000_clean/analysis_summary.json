@@ -1,0 +1,15 @@
+{
+  "total_images": 10015,
+  "md5_unique": 10013,
+  "md5_duplicate_groups": 2,
+  "md5_duplicate_images": 4,
+  "phash_unique": 9996,
+  "phash_duplicate_groups": 19,
+  "phash_duplicate_images": 38,
+  "blur_min": 7.623581479163239,
+  "blur_max": 3825.124242744801,
+  "blur_median": 49.24403692592592,
+  "blur_p1": 15.00470780999232,
+  "blur_p5": 22.17844647197394,
+  "images_below_blur_p1": 101
+}

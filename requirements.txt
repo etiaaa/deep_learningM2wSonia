@@ -1,0 +1,11 @@
+tensorflow>=2.15
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn
+Pillow
+tqdm
+kagglehub
+opencv-python
+imagehash

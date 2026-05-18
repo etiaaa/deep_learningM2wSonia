@@ -1,0 +1,22 @@
+# Donnees brutes / synthetiques (trop lourdes, regenerable)
+data/ham10000/HAM10000_images_part_1/
+data/ham10000/HAM10000_images_part_2/
+data/ham10000_clean/image_quality.csv
+data/ham10000_synth/
+
+# Modeles entraines (trop lourds, regenerable)
+runs/
+
+# Python / Jupyter
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
